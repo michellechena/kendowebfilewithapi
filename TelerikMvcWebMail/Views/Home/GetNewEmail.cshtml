@@ -1,0 +1,89 @@
+﻿@model TelerikMvcWebMail.Models.MailViewModel
+<div class="inner-section">
+    <div class="col-md-12" style="margin-top:20px">
+        <h3>New Email</h3>
+        <hr>
+@using (Ajax.BeginForm("SaveNewEmail", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSucessFunctionFormAddEditEmail" }, new { @id = "FormAddEditEmail" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model=>model.RequestFrom,new { Value="NewEmail"})
+        <div class="row">
+            <div class="form-group col-md-8 ">
+                @Html.Label("Name")
+                <textarea class="form-control"
+                          cols="20"
+                          id="Name"
+                          name="Name"
+                          rows="2" required></textarea>  
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8 ">
+                @Html.Label("Url")
+                <textarea class="form-control"
+                          cols="20"
+                          id="Url"
+                          name="Url"
+                          rows="2" ></textarea>   
+                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8 ">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="button" id="BtnCloseNewEmail" value="Close" class="btn btn-defoult" />
+            </div>
+        </div>
+}
+    </div>
+</div>
+<script>
+
+    $("#FormAddEditEmail").submit(function (eventObj) {
+       
+        var treeview = $("#navigationTreeView").data("kendoTreeView");
+        var dataItem = treeview.dataItem(treeview.select());       
+        $('<input />').attr('type', 'hidden')
+            .attr('name', "Category")
+            .attr('value', dataItem.value)
+            .appendTo('#FormAddEditEmail');
+        
+    });
+
+    $(function () {
+        $("form").kendoValidator({
+            rules: {
+                greaterdate: function (input) {
+                    if (input.is("[data-val-greaterdate]") && input.val() != "") {
+                        var date = kendo.parseDate(input.val()),
+                            earlierDate = kendo.parseDate($("[name='" + input.attr("data-val-greaterdate-earlierdate") + "']").val());
+                        return !date || !earlierDate || earlierDate.getTime() < date.getTime();
+                    }
+
+                    return true;
+                }
+            },
+            messages: {
+                greaterdate: function (input) {
+                    return input.attr("data-val-greaterdate");
+                }
+            }
+        });
+    });
+
+    function OnSucessFunctionFormAddEditEmail(e)
+    {       
+        if (e == true) {
+            showSuccessNotification("Email saved Successfully");
+        }
+        else {
+            alert("Error ");
+        }
+        $('#FormAddEditEmail')[0].reset();
+        $("#mainWidget").data("kendoGrid").dataSource.read();
+    }
+
+
+</script>

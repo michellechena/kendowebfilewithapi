@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+@Scripts.Render("~/Scripts/sidebar.js")
+
+<script id="treeview-template" type="text/kendo-ui-template">
+    <div >#: item.text #</div>     
+    <div style="display:inline"> T:#: item.number #</div> 
+    <div style="margin-left:8px;display:inline"> A:#: item.Active #</div>
+    <div  style="margin-left:8px;display:inline"> D:#: item.Disable #</div> 
+    
+</script>
+
+<aside class="main-sidebar">
+    <div class="content">       
+        <div class="form-group col-md-12" style="padding:10px 5px 0px 3px">
+            <div class="input-group">
+                <input type="text" class="form-control" id="txtFolderSearch" />
+                <span class="input-group-addon">
+                    <i class="fa fa-search"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-12 " style="padding:0px !important">
+        @(Html.Kendo().TreeView()
+            .Name("navigationTreeView")
+            .Events(e => e.Select("selectCategory"))
+            .TemplateId("treeview-template")
+        )
+         </div>
+    </div>    
+</aside>
+<script>
+    $("#txtFolderSearch").keyup(function () {
+        getFolderList("FromSearchFolder");
+        $("#mainWidget").find('tbody').css("display", "none");
+        
+        
+    });
+
+
+
+    
+
+</script>

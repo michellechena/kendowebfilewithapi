@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="195a3f2d957c48df822295fe2f4ff01c" Name="Diagram1">
+        <EntityTypeShape EntityType="WebMail.Event" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMail.Person" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMail.Task" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="WebMail.FK_Tasks_Tasks" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebMail.User" Width="1.5" PointX="7.125" PointY="3.5" />
+        <EntityTypeShape EntityType="WebMail.MailBox" Width="1.5" PointX="6.625" PointY="0.75" />
+        <AssociationConnector Association="WebMail.FK__MailBox__UserId__5CD6CB2B" />
+        <EntityTypeShape EntityType="WebMail.MailBoxAccess" Width="1.5" PointX="11.375" PointY="2.25" />
+        <AssociationConnector Association="WebMail.FK__MailBoxAc__MailB__29221CFB" />
+        <AssociationConnector Association="WebMail.FK__MailBoxAc__UserI__2A164134" />
+        <EntityTypeShape EntityType="WebMail.MailBoxFolder" Width="1.5" PointX="8.875" PointY="0.75" />
+        <AssociationConnector Association="WebMail.FK__MailBoxFo__MailB__02FC7413" />
+        <EntityTypeShape EntityType="WebMail.Mail" Width="1.5" PointX="11.125" PointY="6.375" />
+        <AssociationConnector Association="WebMail.FK__Mails__Category__14270015" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

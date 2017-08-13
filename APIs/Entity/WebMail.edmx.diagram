@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9fdfea03e3624b5eb914f8728468c8b4" Name="Diagram1">
+        <EntityTypeShape EntityType="WebMailModel.Event" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.MailBox" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.MailBoxAccess" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.MailBoxFolder" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.Mail" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.Person" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.Task" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMailModel.User" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="WebMailModel.FK_Tasks_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="WebMailModel.FK__MailBox__UserId__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="WebMailModel.FK__MailBoxAc__MailB__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="WebMailModel.FK__MailBoxFo__MailB__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="WebMailModel.FK__MailBoxAc__UserI__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="WebMailModel.FK__Mails__Category__14270015" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

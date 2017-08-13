@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "NewMail";
+}
+
+@Styles.Render("~/Content/new.css")
+@Scripts.Render("~/Scripts/new-mail.js")
+
+<div class="toolbar">
+    @(Html.Kendo().Menu()
+        .Name("newMailButtons")
+        .Items(items =>
+        {
+            items.Add()
+                .Text("Send");
+            items.Add()
+                .Text("Save");
+            items.Add()
+                .Text("Cancel");
+        })
+        .Events(e => e.Select("newMailMenuSelect"))
+    )
+    @*@(Html.Kendo().Dialog()
+        .Name("newMailDialog")
+        .Visible(false)
+        .Title("")
+        .MaxWidth(400)
+        .Title("Demo Application")
+        .Actions(actions =>
+        {
+            actions.Add().Text("OK").Primary(true);
+        })
+    )*@
+</div>
+<div class="inner-section">
+    <div class="form-wrapper">
+        @Html.Label("newMailSender", "From", new { @class = "form-label" })
+        @(Html.Kendo().DropDownList()
+            .Name("newMailSender")
+            .BindTo(new List<SelectListItem>() {
+                new SelectListItem() {
+                    Text = "Antonio.Morandi@progress.com",
+                    Value = "1"
+                }
+            })
+            .Value("1")
+            .HtmlAttributes(new { style = "width: 280px;" })
+        )
+    </div>
+    @Html.Label("newMailPriority", "Priority", new { @class = "form-label" })
+    @(Html.Kendo().DropDownList()
+        .Name("newMailPriority")
+        .BindTo(new List<SelectListItem>() {
+            new SelectListItem() {
+                Text = "Normal",
+                Value = "1"
+            },
+            new SelectListItem() {
+                Text = "Urgent",
+                Value = "2"
+            },
+            new SelectListItem() {
+                Text = "High",
+                Value = "3"
+            },
+            new SelectListItem() {
+                Text = "Low",
+                Value = "4"
+            }
+        })
+        .Value("1")
+        .HtmlAttributes(new { style = "width: 100px;" })
+    )
+    @Html.Label("to-textbox", "To", new { @class = "form-label" })
+    @(Html.Kendo().MultiSelect()
+        .Name("to-textbox")
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .DataSource(ds => ds.Read("ContactsMails", "Contacts"))
+        .Value(ViewBag.MailTo)
+    )
+    @Html.Label("subject-textbox", "Subject", new { @class = "form-label" })
+    <input type="text" class="k-input long-textbox subject-textbox" name="subject-textbox" value="@(ViewBag.Subject)">
+    <div class="attachements-line">
+        @Html.Label("files", "Attachments", new { @class = "form-label" })
+        @(Html.Kendo().Upload()
+            .Name("files")
+            .Async(a => a
+                .Save("Save", "Upload")
+                .Remove("Remove", "Upload")
+                .AutoUpload(true)
+            )
+            .Messages(m => m
+                .Select("Add files ...")
+                .DropFilesHere("Drop files here to upload")
+            )
+        )
+    </div>
+
+    @(Html.Kendo().Editor()
+        .Name("newMail")
+        .HtmlAttributes(new { style = "height: 500px;" })
+    )
+</div>

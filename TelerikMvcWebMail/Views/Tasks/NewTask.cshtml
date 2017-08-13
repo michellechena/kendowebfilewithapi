@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "NewTask";
+}
+
+@Styles.Render("~/Content/new.css")
+@Scripts.Render("~/Scripts/new-task.js")
+
+<section class="inner-section tasks">
+    <h2>Add New Task</h2>
+    @Html.Label("newTaskCategory", "Category", new { @class = "form-label" })
+    @(Html.Kendo().DropDownList()
+        .Name("newTaskCategory")
+        .BindTo(new List<SelectListItem>() {
+            new SelectListItem() {
+                Text = "All",
+                Value = "All"
+            },
+            new SelectListItem() {
+                Text = "Personal",
+                Value = "Personal"
+            },
+            new SelectListItem() {
+                Text = "Work",
+                Value = "Work"
+            }
+        })
+        .Value("All")
+        .HtmlAttributes(new { style = "width: 200px;" })
+    )
+    @Html.Label("subject-textbox", "Subject", new { @class = "form-label" })
+    <input type="text" class="k-input long-textbox subject-textbox" name="subject-textbox">
+
+    @(Html.Kendo().Editor()
+        .Name("newTask")
+        .HtmlAttributes(new { style = "height: 500px;" })
+    )
+    <div class="form-buttons">
+        @(Html.Kendo().Button()
+            .Name("addTask")
+            .HtmlAttributes(new { @class = "k-primary" })
+            .Tag("span")
+            .Content("Add Task")
+            .Events(e => e.Click("addClick"))
+        )
+        @(Html.Kendo().Button()
+            .Name("cancel")
+            .Tag("span")
+            .Content("Cancel")
+            .Events(e => e.Click("cancelClick"))
+        )
+    </div>
+</section>

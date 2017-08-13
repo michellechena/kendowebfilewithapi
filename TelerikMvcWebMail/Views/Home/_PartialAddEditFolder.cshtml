@@ -1,0 +1,273 @@
+﻿@model TelerikMvcWebMail.Models.MailBoxFolderModel
+
+@{
+  Layout = null;
+}
+<script>
+    function MailBoxIdChnage(e) {
+        CreateSequnceLi($("#MailBoxId").val());
+    }
+    function CreateSequnceLi(id)
+    {
+        $.ajax({
+            url: '/Home/getFolderlistBySelectedmailBox',
+            cache: false,
+            async: false,
+            data: { MailBoxId: id },
+            success: function (Data) {
+                $("#RuleSequnceDv").css("display", "");
+                $("#sortable-listA").html('');
+                $.each(Data, function (key, value) {
+                    var Sequence;
+                    if ('@Model.MailBoxFolderId' == Data[key].MailBoxFolderId)
+                    {
+                        Sequence = '<li class="list-item" id=' + Data[key].MailBoxFolderId + '><span id="NewRecordSequnceLi">' + Data[key].MailBoxFolderName + ' </span><i class="fa fa-sort" aria-hidden="true"></i></li>';
+                        
+                    }
+                    else {
+                        Sequence = '<li class="list-item" id=' + Data[key].MailBoxFolderId + '>' + Data[key].MailBoxFolderName + ' <i class="fa fa-sort" aria-hidden="true"></i></li>';
+                    }
+                    
+                    $("#sortable-listA").append(Sequence);
+                });
+                if ('@Model.MailBoxFolderId' == 0 || '@Model.MailBoxFolderId' == "") {
+                    var Li = '<li class="list-item" id="NEWREC" style="background-color:#fa9f54 !important "><span id="NewRecordSequnceLi">New Folder Sequense</span> <i class="fa fa-sort" aria-hidden="true"></i></li>';
+                    $("#sortable-listA").append(Li);
+                }
+            },
+            error: function (error) {
+                // alert('Error');
+            }
+        })
+
+       
+    }
+    </script>
+<div class="col-md-10">
+    @using (Ajax.BeginForm("AddEditFolder", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSucessFunctionFormAddEditFolder" }, new { @id = "FormAddEditFolder" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+           
+            @Html.HiddenFor(model => model.MailBoxFolderId, new { @value = Model.MailBoxFolderId })
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.MailBoxId, htmlAttributes: new { @class = "" })
+                </div>
+                    <div class="col-md-12">
+            
+                        @(Html.Kendo().DropDownListFor(m => m.MailBoxId)
+                          .DataTextField("Text")
+                          .DataValueField("Value")
+                             .Events(e =>
+                             {
+                                 e.Change("MailBoxIdChnage");
+                             })
+
+                        .BindTo(ViewBag.FolderList)                        
+                        )
+                        @Html.ValidationMessageFor(model => model.MailBoxId, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+            </div>  
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.MailBoxFolderName, htmlAttributes: new { @class = "" })
+                </div>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.MailBoxFolderName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MailBoxFolderName, "", new { @class = "text-danger" })
+                </div>
+               
+            </div>      
+            <div class="form-group" id="RuleSequnceDv" style="display:none">
+               
+                <div class="list-wrapper col-md-12">
+                    @Html.LabelFor(x => x.Sequence)
+                    <ul id="sortable-listA" class="form-group col-lg-12 no-padding">
+
+                    </ul>
+                </div>
+            </div>
+          
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+
+    $(document).ready(function () {       
+        
+
+        if ('@Model.MailBoxId' != "0") {
+            CreateSequnceLi('@Model.MailBoxId');
+            $("#RuleSequnceDv").css("display", "");
+        }
+    });
+
+    $("#MailBoxFolderName").keyup(function () {
+        $("#NewRecordSequnceLi").html($("#MailBoxFolderName").val());
+    });
+    
+
+    $("#FormAddEditFolder").submit(function (eventObj) {
+      
+        var SequenceArray = [];
+        $("#sortable-listA").find('li').each(function () {
+            SequenceArray.push($(this).attr("id"));
+        })
+        $('<input />').attr('type', 'hidden')
+            .attr('name', "Sequenseids")
+            .attr('value', SequenceArray.toString())
+            .appendTo('#FormAddEditFolder');
+        //return true;
+    });
+
+    function OnSucessFunctionFormAddEditFolder(e)
+    {
+        $("#AddEditFolderDetailes").data("kendoWindow").close();
+        if(e==true)
+        {
+            //alert("Folder Detailes Save SUceesfully");
+        }
+        else {
+            alert("Error ");
+        }
+        $("#gridFolders").data("kendoGrid").dataSource.read();
+    }
+    function placeholder(element) {
+        return $("<li class='list-item' id='placeholder'>Drop Here!</li>");
+    }
+
+    var listA = $("#sortable-listA").kendoSortable({
+        connectWith: "#sortable-listB",
+        placeholder: placeholder,
+        hint: function (element) {
+            var hint = $("<div class='sortable-hint'></div>");
+            $(".state-selected").clone().css("display", "block").appendTo(hint);
+
+            setTimeout(function () {
+                hint.children().show();
+            });
+
+            return hint;
+        },
+        start: function (e) {
+            $(".state-selected").hide();
+        },
+        end: function (e) {
+            var items = this.element.find(".state-selected").not(e.item);
+            items.insertAfter(this.placeholder).show();
+        },
+        change: function (e) {
+            $(".state-selected").removeClass("state-selected");
+        }
+    }).data("kendoSortable");
+    $("#sortable-listB").kendoSortable({
+        placeholder: placeholder
+    });
+
+    $(function () {
+        $("form").kendoValidator({
+            rules: {
+                greaterdate: function (input) {
+                    if (input.is("[data-val-greaterdate]") && input.val() != "") {
+                        var date = kendo.parseDate(input.val()),
+                            earlierDate = kendo.parseDate($("[name='" + input.attr("data-val-greaterdate-earlierdate") + "']").val());
+                        return !date || !earlierDate || earlierDate.getTime() < date.getTime();
+                    }
+
+                    return true;
+                }
+            },
+            messages: {
+                greaterdate: function (input) {
+                    return input.attr("data-val-greaterdate");
+                }
+            }
+        });
+    });
+</script>
+
+
+
+<style>
+    #example {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .demo-section {
+        padding: 50px 70px;
+    }
+
+
+    .list-wrapper {
+        overflow: hidden;
+    }
+
+    #sortable-listA, #sortable-listB, #sortable-listC, #sortable-listD, .sortable-hint {
+        // width: 210px;
+        min-height: 40px;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #dddddd;
+        border-radius: 4px;
+    }
+
+    #sortable-listA, #sortable-listC {
+        float: left;
+    }
+
+    #sortable-listB, #sortable-listD {
+        float: right;
+    }
+
+    .list-item {
+        list-style-type: none;
+        // width: 200px;
+        margin: 5px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #222222;
+        color: #ffffff;
+        border-radius: 3px;
+        cursor: move;
+    }
+
+    #sortable-listA .list-item {
+        background-color: #54b8fa;
+        color: #000000;
+    }
+
+    #sortable-listB .list-item {
+        background-color: #ff879e;
+        color: #000000;
+    }
+
+    .sortable-hint .list-item {
+        background-color: #54b8fa;
+        color: #000000;
+    }
+
+    #placeholder.list-item {
+        background-color: #ffffff;
+        color: #777;
+    }
+
+    .state-selected {
+        background-color: #ff0 !important;
+    }
+</style>

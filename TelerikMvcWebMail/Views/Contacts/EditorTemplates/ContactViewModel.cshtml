@@ -1,0 +1,66 @@
+﻿@model TelerikMvcWebMail.Models.ContactViewModel
+
+<div class="contact-edit-view k-widget">
+
+    @Styles.Render("~/Content/new.css")
+
+    <h2 class="form-title"><span class="action">Create New</span> Contact</h2>
+    <div class="forms-panel">
+        @Html.HiddenFor(Model => Model.EmployeeID)
+        @Html.Label("newContactCategory", "Category", new { @class = "form-label" })
+        @(Html.Kendo().DropDownListFor(Model => Model.Category)
+        .BindTo(new List<SelectListItem>() {
+            new SelectListItem() {
+                Text = "Favorites",
+                Value = "Favorites"
+            }, new SelectListItem() {
+                Text = "Friends",
+                Value = "Friends"
+            }, new SelectListItem() {
+                Text = "Work",
+                Value = "Work"
+            }
+        })
+        )
+        @Html.Label("Title", "Title", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.Title, new { @class = "k-textbox" }))
+        <span data-for="ProductName" class="k-invalid-msg"></span>
+        @Html.Label("Name", "Name", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.Name, new { @class = "k-textbox" }))
+        <span data-for="ProductName" class="k-invalid-msg"></span>
+        @Html.Label("Company", "Company", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.Company, new { @class = "k-textbox" }))
+        @Html.Label("City", "City", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.City, new { @class = "k-textbox" }))
+        @Html.Label("Country", "Country", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.Country, new { @class = "k-textbox" }))
+        @Html.Label("Phone", "Phone", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.Phone, new { @class = "k-textbox" }))
+        @Html.Label("Email", "Email", new { @class = "form-label" })
+        @(Html.TextBoxFor(Model => Model.Email, new { @class = "k-textbox" }))
+    </div>
+    <div class="upload-wrapper">
+        <span class="upload-image-wrapper">
+            <img class="image-preview" src="# if (sessionStorage.getItem(EmployeeID)) { # data:image/png;base64,#:sessionStorage.getItem(EmployeeID)# # } else { # @(Url.Content("~/Contacts/Picture/"))#:EmployeeID# # } #" alt="#:EmployeeID # image"/>
+        </span>
+        @(Html.Kendo().Upload()
+            .Name("photo")
+            .Multiple(false)
+            .Async(a => a
+                .Save("UploadPhoto", "Contacts")
+                .Remove("RemovePhoto", "Contacts")
+                .AutoUpload(true)
+            )
+            .Validation(v => v.AllowedExtensions(new string[] { ".gif", ".jpg", ".png" }))
+            .Messages(m => m
+                .Select("Add Photo ...")
+                .DropFilesHere("Drop files here to upload")
+            )
+            .Events(e => e.Select("onImageSelect"))
+        )
+    </div>
+    <div class="form-buttons">
+        <button type="button" class="k-button k-primary k-update-button" href="\\#">Save</button>
+        <button type="button" class="k-button k-cancel-button" href="\\#">Cancel</button>
+    </div>
+</div>
