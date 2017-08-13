@@ -7,51 +7,36 @@ using System.Web.Mvc;
 
 namespace TelerikMvcWebMail.Models
 {
-    public class MailViewModel
+
+    public class FilesViewModel
     {
-        public int ID { get; set; }
-
-        public bool? IsRead { get; set; }
-
-        public string From { get; set; }
-        
-        public string Subject { get; set; }
-
-        public DateTime? Date { get; set; }
-
-        [AllowHtml]
-        public string Text { get; set; }
-
-        public string Category { get; set; }
-
-        public string To { get; set; }
-
-        public string Email { get; set; }
-        public string Status { get; set; }
-        public string Owner { get; set; }
-
-        [Required(ErrorMessage = "name required")]
+        public int Id { get; set; }
+        public string Path { get; set; }
+        [Required(ErrorMessage = "File Name Required")]
         public string Name { get; set; }
-        public string Url { get; set; }
-        public Nullable<bool> IsValid { get; set; }
+        public byte TypeId { get; set; }
+        public string FolderId { get; set; }
+        public byte StatusId { get; set; }
+        public bool IsValid { get; set; }
+        public string PermitionLevel { get; set; }
         public string RequestFrom { get; set; }
-    
+
     }
-    
-    public class MailBoxFolderModel
+
+        
+    public class FoldersViewmodel
     {
-        public string MailBoxName { get; set; }
-        public int MailBoxFolderId { get; set; }
-        [Display(Name = "Folder Name")]
-        [Required(ErrorMessage = "Folder name required")]
-        public string MailBoxFolderName { get; set; }
-        [Required(ErrorMessage ="MailBox required")]
-        [Display(Name ="Mail Box")]
+        public int Id { get; set; }
+        [Required(ErrorMessage ="Name Required")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Mail Box Name Required")]
         public int MailBoxId { get; set; }
-        public long Sequence { get; set; }
-        public string Owner { get; set; }
-        public string UserId { get; set; }
-        public string Sequenseids { get; set; }
+        public string MailBoxName { get; set; }
+
+        [Required(ErrorMessage = "Folder type Required")]
+        public byte ?TypeId { get; set; }
+        public byte? StatusId { get; set; }
     }
 
     public class Folders

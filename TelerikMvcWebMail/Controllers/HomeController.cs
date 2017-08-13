@@ -27,24 +27,24 @@ namespace TelerikMvcWebMail.Controllers
             {
                 MailBoxid = Convert.ToInt32(TempData["SelectedMailBoxId"]);
             }
-            catch(Exception ex)
-            {                
-            }
-            if (MailBoxid!=0)
+            catch (Exception ex)
             {
-                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"].ToString()+"&MailBoxid="+MailBoxid , RestSharp.Method.GET);
-                string Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
-                ViewBag.FirstFolderId = Result;
+
+            }
+            if (MailBoxid != 0)
+            {
+                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"]+ "&MailBoxId="+ MailBoxid, RestSharp.Method.GET);
+                string FirstFolderId = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
+                ViewBag.FirstFolderId = FirstFolderId;
             }
             else
             {
-                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"].ToString(), RestSharp.Method.GET);
-                string Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
-                ViewBag.FirstFolderId = Result;
-                
+                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"], RestSharp.Method.GET);
+                string FirstFolderId = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
+                ViewBag.FirstFolderId = FirstFolderId;
             }
-             
-              return View();
+
+            return View();
         }
 
         
@@ -61,12 +61,12 @@ namespace TelerikMvcWebMail.Controllers
         public ActionResult ReadMailDetails(string MailId)
         {
             var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/ReadMailDetails?MailId="+ MailId, RestSharp.Method.GET);
-            MailViewModel Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<MailViewModel>(Data);           
+            FilesViewModel Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FilesViewModel>(Data);           
             return PartialView("EmailDetailes", Result);
 
         }
         [HttpPost]
-        public ActionResult UpdateEmailSubject(MailViewModel Model)
+        public ActionResult UpdateEmailSubject(FilesViewModel Model)
         {
             var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/UpdateEmailSubject", RestSharp.Method.POST, Model);
             bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
@@ -81,14 +81,14 @@ namespace TelerikMvcWebMail.Controllers
         
         public ActionResult returnFolderPartalView(string FolderId)
         {
-            MailBoxFolderModel Model = new MailBoxFolderModel();            
+            FoldersViewmodel Model = new FoldersViewmodel();            
             List<SelectListItem> List = new List<SelectListItem>() {
                 new SelectListItem {
                     Text="Select",
                     Value=""
                 }
             };
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxListForFolder?UserId="+ Session["UserId"], RestSharp.Method.GET);
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxList", RestSharp.Method.GET);
             List<SelectListItem> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<SelectListItem>>(Data);
             List.AddRange(Result);
             ViewBag.FolderList = List;
@@ -96,7 +96,7 @@ namespace TelerikMvcWebMail.Controllers
             if (!string.IsNullOrEmpty(FolderId))
             {
                 var _MailBoxFolderModel = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFolderDeatiles?FolderId=" + FolderId, RestSharp.Method.GET);
-                Model = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<MailBoxFolderModel>(_MailBoxFolderModel);
+                Model = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FoldersViewmodel>(_MailBoxFolderModel);
                              
             }
             
@@ -105,27 +105,20 @@ namespace TelerikMvcWebMail.Controllers
         }
 
 
-        public ActionResult AddEditFolder(MailBoxFolderModel Model)
+        public ActionResult AddEditFolder(FoldersViewmodel Model)
         {
             
-            Model.UserId = Session["UserId"].ToString();           
+                    
             var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/AddEditFolder", RestSharp.Method.POST, Model);
             bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
             return Json(Result, JsonRequestBehavior.AllowGet);
 
         }
-        public ActionResult FunctionDeleteFolder(string id)
-        {            
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/DeleteFolder?Id="+id, RestSharp.Method.GET);
-            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);            
-            return Json(Result, JsonRequestBehavior.AllowGet);
-
-        }
-        
+       
         public ActionResult getFolderlistBySelectedmailBox(long MailBoxId)
         {
             var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxFolderListForFolderPage?MailBoxId=" + MailBoxId+ "&UserId="+ Session["UserId"].ToString(), RestSharp.Method.GET);
-            List<MailBoxFolderModel> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<MailBoxFolderModel>>(Data);
+            List<FoldersViewmodel> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<FoldersViewmodel>>(Data);
             return Json(Result, JsonRequestBehavior.AllowGet);            
            
         }
@@ -134,16 +127,16 @@ namespace TelerikMvcWebMail.Controllers
             return PartialView();
         }
 
-        public ActionResult SaveNewEmail(MailViewModel _MailViewModel)
+        public ActionResult SaveNewFile(FilesViewModel _MailViewModel)
         {
-            if (string.IsNullOrEmpty(_MailViewModel.Url))
+            if (string.IsNullOrEmpty(_MailViewModel.Path))
             {
                 _MailViewModel.IsValid = false;
             }
             else
             {
                 Uri uriResult;
-                bool result = Uri.TryCreate(_MailViewModel.Url, UriKind.Absolute, out uriResult)
+                bool result = Uri.TryCreate(_MailViewModel.Path, UriKind.Absolute, out uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
 
                 if (result)
@@ -155,17 +148,11 @@ namespace TelerikMvcWebMail.Controllers
                     _MailViewModel.IsValid = false;
                 }
             }
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/SaveNewEmail", RestSharp.Method.POST, _MailViewModel);
-            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
-            return Json(Result, JsonRequestBehavior.AllowGet);            
-        }
-
-        public ActionResult UpdateMailActiveDisable(string MessageId, string Flag)
-        {
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/UpdateMailStatus?Id="+ MessageId+ "&flag="+ Flag, RestSharp.Method.GET);
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/SaveNewFile", RestSharp.Method.POST, _MailViewModel);
             bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
             return Json(Result, JsonRequestBehavior.AllowGet);
         }
+
 
 
     }

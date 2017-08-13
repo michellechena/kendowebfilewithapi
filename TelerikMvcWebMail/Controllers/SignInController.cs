@@ -15,9 +15,9 @@ namespace TelerikMvcWebMail.Controllers
         // GET: /SignIn/
         public ActionResult Index(string ReturnUrl)
         {
-            
-           
-            Session["APIHostUrl"] = System.Configuration.ConfigurationManager.AppSettings["APIHostUrl"];
+
+
+            SessionMangment.Users_.APIHostUrl = System.Configuration.ConfigurationManager.AppSettings["APIHostUrl"];
             if (ReturnUrl=="Sessionexpire")
             {
                 ViewBag.LoginError = "Session Expire";
@@ -39,14 +39,14 @@ namespace TelerikMvcWebMail.Controllers
                 UserViewModel _User = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<UserViewModel>(Data);                
                 if(_User ==null)
                 {
-                    ViewBag.LoginError = "User Name and Password Incurrect";
+                    ViewBag.LoginError = "User Name Incurrect";
                     return View("SignIn", Model);                    
                 }
                 else
                 {
-                    Session["FullName"] = _User.FullName;
+                    Session["FullName"] = _User.FirstName +" "+ _User.LastName;
                     Session["UserEmail"] = _User.Email;
-                    Session["UserId"] = _User.UserId;
+                    Session["UserId"] = _User.id;
                     return RedirectToAction("index", "Home");
                 }
                 

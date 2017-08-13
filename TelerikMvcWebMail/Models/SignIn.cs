@@ -10,15 +10,15 @@ namespace TelerikMvcWebMail.Models
     {
         [Required(ErrorMessage = "User Name Required")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Password Required")]
-        public string Password { get; set; }
+        
     }
 
     public partial class UserViewModel
     {
-        public int UserId { get; set; }
-        public string FullName { get; set; }
+        public int id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+
     }
 }

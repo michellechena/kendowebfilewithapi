@@ -140,10 +140,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Common.cs" />
-    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Common\SessionMangment.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
-    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Filter\SessionExpire.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,8 +196,6 @@
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\calendar.js" />
-    <Content Include="Scripts\contacts.js" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\mails.js" />
     <Content Include="Scripts\new-mail.js" />
@@ -206,7 +203,6 @@
     <Content Include="Scripts\sidebar-footer.js" />
     <Content Include="Scripts\sidebar.js" />
     <Content Include="Scripts\sign-in.js" />
-    <Content Include="Scripts\tasks.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -234,23 +230,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Tasks\NewTask.cshtml" />
-    <Content Include="Views\Tasks\Tasks.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Contacts\Contacts.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Calendar\Calendar.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\SignIn\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Contacts\EditorTemplates\ContactViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Fonts\WebComponentsIcons\WebComponentsIcons.eot" />
@@ -276,7 +259,6 @@
     <Content Include="Content\signIn.scss" />
     <Content Include="Content\sidebar.scss" />
     <Content Include="Content\metroThemeCustomization.scss" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Content\tasks.scss" />
     <Content Include="Content\new.scss" />
     <Content Include="Content\about.scss" />

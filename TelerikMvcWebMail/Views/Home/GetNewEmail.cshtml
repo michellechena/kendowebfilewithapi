@@ -1,9 +1,19 @@
-﻿@model TelerikMvcWebMail.Models.MailViewModel
+﻿@model TelerikMvcWebMail.Models.FilesViewModel
+    
+<style>
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight:100;
+          }
+
+</style>
 <div class="inner-section">
     <div class="col-md-12" style="margin-top:20px">
-        <h3>New Email</h3>
+        <h4>New Url</h4>
         <hr>
-@using (Ajax.BeginForm("SaveNewEmail", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSucessFunctionFormAddEditEmail" }, new { @id = "FormAddEditEmail" }))
+@using (Ajax.BeginForm("SaveNewFile", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSucessFunctionFormAddEditEmail" }, new { @id = "FormAddEditEmail" }))
 {
     @Html.AntiForgeryToken()
 
@@ -15,7 +25,7 @@
                           cols="20"
                           id="Name"
                           name="Name"
-                          rows="2" required></textarea>  
+                          rows="1" required></textarea>  
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -24,12 +34,43 @@
                 @Html.Label("Url")
                 <textarea class="form-control"
                           cols="20"
-                          id="Url"
-                          name="Url"
-                          rows="2" ></textarea>   
-                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                          id="Path"
+                          name="Path"
+                          rows="1" ></textarea>   
+                @Html.ValidationMessageFor(model => model.Path, "", new { @class = "text-danger" })
             </div>
         </div>
+    <div class="row">
+        <div class="form-group col-md-8 ">
+            @Html.Label("Type")
+            @(Html.Kendo().DropDownList()
+                  .Name("TypeId")
+                  .DataTextField("Text")
+                  .DataValueField("Value")
+                  .BindTo(new List<SelectListItem>() {
+                      new SelectListItem() {
+                          Text = "Select Type",
+                          Value = ""
+                      },
+                      new SelectListItem() {
+                          Text = "Exact",
+                          Value = "0"
+                      },
+                      new SelectListItem() {
+                          Text = "Container",
+                          Value = "1"
+                      }
+                      //new SelectListItem() {
+                      //    Text = "Pattern",
+                      //    Value = "2"
+                      //}
+                  })
+                  .HtmlAttributes(new { style = "width: 100%" })
+                  )
+            @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;"></div>
         <div class="row">
             <div class="form-group col-md-8 ">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -44,16 +85,17 @@
     $("#FormAddEditEmail").submit(function (eventObj) {
        
         var treeview = $("#navigationTreeView").data("kendoTreeView");
-        var dataItem = treeview.dataItem(treeview.select());       
+        var dataItem = treeview.dataItem(treeview.select());
+       // alert(dataItem.value);
         $('<input />').attr('type', 'hidden')
-            .attr('name', "Category")
+            .attr('name', "FolderId")
             .attr('value', dataItem.value)
             .appendTo('#FormAddEditEmail');
-        
+       // eventObj.preventdefault()
     });
 
     $(function () {
-        $("form").kendoValidator({
+        $("#FormAddEditEmail").kendoValidator({
             rules: {
                 greaterdate: function (input) {
                     if (input.is("[data-val-greaterdate]") && input.val() != "") {

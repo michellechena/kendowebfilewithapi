@@ -179,28 +179,19 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApiHomeController.cs" />
-    <Compile Include="Entity\Event.cs">
+    <Compile Include="Entity\File.cs">
       <DependentUpon>WebMail.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Mail.cs">
+    <Compile Include="Entity\Folder.cs">
       <DependentUpon>WebMail.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\MailBox.cs">
       <DependentUpon>WebMail.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\MailBoxAccess.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\MailBoxFolder.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Person.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Task.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entity\User.cs">
+      <DependentUpon>WebMail.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserMailBox.cs">
       <DependentUpon>WebMail.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\WebMail.Context.cs">

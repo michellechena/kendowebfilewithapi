@@ -13,6 +13,8 @@ function populateNavigationTree(data, FromSearchFolder) {
     
     //alert(Cookies.get('ChangedIdOfFolder') + selected);
     var newDataSource = new kendo.data.HierarchicalDataSource({ data: data });
+    newDataSource.sort();
+
     var navigationTreeView = $('#navigationTreeView').data('kendoTreeView');
     navigationTreeView.setDataSource(newDataSource);
     if (FromSearchFolder == "FromSearchFolder") {

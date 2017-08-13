@@ -25,13 +25,10 @@ namespace APIs.Entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<File> Files { get; set; }
+        public virtual DbSet<Folder> Folders { get; set; }
         public virtual DbSet<MailBox> MailBoxes { get; set; }
-        public virtual DbSet<MailBoxAccess> MailBoxAccesses { get; set; }
-        public virtual DbSet<MailBoxFolder> MailBoxFolders { get; set; }
-        public virtual DbSet<Mail> Mails { get; set; }
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserMailBox> UserMailBoxes { get; set; }
     }
 }

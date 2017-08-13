@@ -17,19 +17,18 @@ namespace APIs.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MailBox()
         {
-            this.MailBoxAccesses = new HashSet<MailBoxAccess>();
-            this.MailBoxFolders = new HashSet<MailBoxFolder>();
+            this.Folders = new HashSet<Folder>();
+            this.UserMailBoxes = new HashSet<UserMailBox>();
         }
     
-        public int MailBoxId { get; set; }
-        public string MailBoxName { get; set; }
-        public int UserId { get; set; }
-        public long MailBoxSequence { get; set; }
+        public int id { get; set; }
+        public string ShortName { get; set; }
+        public string FullName { get; set; }
+        public byte StatusId { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MailBoxAccess> MailBoxAccesses { get; set; }
+        public virtual ICollection<Folder> Folders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MailBoxFolder> MailBoxFolders { get; set; }
+        public virtual ICollection<UserMailBox> UserMailBoxes { get; set; }
     }
 }

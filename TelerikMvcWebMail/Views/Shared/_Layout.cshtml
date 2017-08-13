@@ -1,7 +1,29 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
+<head>   
     <style>
+
+          .HideElement {
+            display: none;
+        }
+
+        .km-widget.km-buttongroup {
+            margin: 0 auto;
+        }
+
+        .k-highcontrast .k-button-group .k-button {
+            background-color: rgb(44, 35, 43);
+        }
+
+
+        /*.highlight-yellow {
+            background-color: #e2b575 !important;
+        }*/
+
+          .highlight-yellow {
+              background-color: gray !important;
+                            }
+
         .SucessNotification
         {
             background-color:#5cb85c !important ;
@@ -19,9 +41,9 @@
             background-color:#0f7fd2 !important;
         }
 
-        .k-header {
+        /*.k-header {
             font-weight: 700 !important;
-        }
+        }*/
         div.k-treeview {  
              white-space: inherit !important;
         </style>
@@ -69,7 +91,7 @@
 </head>
 <body>
     <div id="BaseUrl" data-baseurl="@Context.Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~/")"></div>
-    <div id="APIBaseUrl" data-baseurl="@Session["APIHostUrl"]"></div>
+    <div id="APIBaseUrl" data-baseurl="@SessionMangment.Users_.APIHostUrl"></div>
     <input type="hidden" id="txtLoginUserId" value="@Session["UserId"]">
     @Scripts.Render("~/Scripts/layout.js")
 
@@ -99,8 +121,8 @@
        
         @{
             long UserId =Convert.ToInt64(Session["UserId"]);
-            string APUrl ="api/ApiHome/MailBoxList?UserId=" + UserId + "&request=DRP";
-            var MailBox= TelerikMvcWebMail.Common.CallWebApi(APUrl, RestSharp.Method.GET);           
+            string APUrl = "api/ApiHome/UserMailBox?UserId=" + UserId + "&request=DRP";
+            var MailBox= TelerikMvcWebMail.Common.CallWebApi(APUrl, RestSharp.Method.GET);
             List<SelectListItem> _MailBox = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<SelectListItem>>(MailBox);
 
         }
@@ -117,10 +139,10 @@
                 .Name("mainMenu")
                 .Items(items =>
                 {
-                    items.Add().Text("Mail").Action("Index", "Home");
-                    items.Add().Text("Calendar").Action("Index", "Calendar");
-                    items.Add().Text("People").Action("Index", "Contacts");
-                    items.Add().Text("Tasks").Action("Index", "Tasks");
+                    items.Add().Text("Files").Action("Index", "Home");
+                    //items.Add().Text("Calendar").Action("Index", "Calendar");
+                    //items.Add().Text("People").Action("Index", "Contacts");
+                    //items.Add().Text("Tasks").Action("Index", "Tasks");
                     items.Add().Text("<span class='image-wrapper'><img src='http://demos.telerik.com/kendo-ui/content/web/Customers/PICCO.jpg'/><span/>").Encoded(false);
                 })
         )

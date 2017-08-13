@@ -34,16 +34,15 @@
     <div class="sidebar">
         <div class="header">
             <a href="@Url.Action("Index", "Home")" title="Go to WebMail">
-                <h1>WebMail</h1>
-                <p>ASP.NET MVC Demo App</p>
+                <h1>Url Manager</h1>
+              
             </a>
         </div>
         <div class="footer">
             <p>
                 Copyright &copy; @DateTime.Now.Year
                 <br />
-                Progress Software Corporation and/or its subsidiaries or affiliates.
-            </p>
+                Microsoft Corporation
             <p>
                 All Rights Reserved.
             </p>
@@ -68,14 +67,7 @@
                         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @Value = "123" } })
-                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+              
                 <br>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
@@ -92,10 +84,6 @@
             </div>
         }
        
-            <div class="links">
-            <p id="btn-about">About This App</p>
-            @Html.ActionLink("Download Source Code", "Index", "SignIn")
-        </div>
     </div>
 
     @(Html.Kendo().Window()

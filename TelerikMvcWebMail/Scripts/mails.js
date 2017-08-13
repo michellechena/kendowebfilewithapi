@@ -15,7 +15,7 @@ $(document).ready(function () {
     if (Cookies.get('selectedNodeText')) {
       //  filterGrid(Cookies.get('selectedNodeText'));
     }
-    else if (treeview.select().length == 0) {
+    else if (treeview.select().length == 0) {        
         filterGrid($("#txtFirstFolderId").val());
     }
 
@@ -51,7 +51,7 @@ $(document).ready(function () {
         dataInView.forEach(function (item) {
             var row = $('tr[data-uid="' + item.uid + '"]');
 
-            if (item.Subject.toLowerCase().indexOf(text) > -1) {
+            if (item.Name.toLowerCase().indexOf(text) > -1) {
                 row.show();
             } else {
                 row.hide();
@@ -152,7 +152,7 @@ function mailMoveDelete(id) {
 
     for (var i = 0; i < grid.select().length; i++) {
         var selectedItem = grid.dataItem(grid.select()[i]);
-        selectedItem.Category = id;        
+        selectedItem.FolderId = id;
         selectedItem.dirty = true;
     }
 
@@ -254,13 +254,12 @@ function selectCategory(e) {
 }
 
 // Filter grid according to the currently selected mails category
-function filterGrid(selectedText) {
-   
+function filterGrid(selectedText) { 
     var mailsGrid = $("#mainWidget").data("kendoGrid");
     if (!mailsGrid) {
         window.location.href = baseUrl + '/Home/Index';
     } else {
-        mailsGrid.dataSource.filter({ field: "Category", operator: "contains", value: selectedText });
+        mailsGrid.dataSource.filter({ field: "FolderId", operator: "contains", value: selectedText });
     }
     $("#mainWidget").find('tbody').css("display", "");
 }
@@ -279,15 +278,15 @@ function getinitialNumberOfItems(gridData, MailBoxFolders) {
         var FolderWiseTotalCount = 0;
         for (var i = 0; i < gridData.length; i++) {
           
-            var currentItemCategory = gridData[i].Category;
+            var currentItemCategory = gridData[i].FolderId;
             try{
                 if (FolderCountForActive == 0) {               
                     numbers[currentItemCategory].TotalCount += 1;
                 }                
-                if (gridData[i].Status == "A" && gridData[i].Category == MailBoxFolders[FolderCountForActive].value) {
+                if (gridData[i].StatusId == "1" && gridData[i].FolderId == MailBoxFolders[FolderCountForActive].value) {
                     numbers[currentItemCategory].ActiveCount += 1;
                 }
-                else if (gridData[i].Status == "D" && gridData[i].Category == MailBoxFolders[FolderCountForActive].value) {
+                else if (gridData[i].StatusId == "0" && gridData[i].FolderId == MailBoxFolders[FolderCountForActive].value) {
                     numbers[currentItemCategory].DisabledCount += 1;
                 }
             }
@@ -326,7 +325,7 @@ function dataSourceChange(e) {
 
         for (var i = 0; i < dataLength; i++) {
             var currntItem = data[i];
-            if (currntItem.Category !== dataItem.value) {
+            if (currntItem.FolderId !== dataItem.value) {
                 i -= 1;
                 dataLength -= 1;
                 grid.dataSource.pushDestroy(currntItem);
@@ -380,19 +379,24 @@ function getFolderList(FromSearchFolder)
                         var FolderId = MailBoxFolders[FolderCount].value;
 
                         $(".disabledMenu").remove();
-                        if (MailBoxFolders[FolderCount].Owner == "YES") {
-                            var newds = '<li class="k-item k-state-default" id="' + FolderId + '" operation="moveDelete" role="menuitem" aria-disabled="false"><span class="k-link">' + MailBoxFolders[FolderCount].text + '</span></li>';
-                            $('#MoveMenu').find('.k-menu-group').append(newds);
+                        var newds = '<li class="k-item k-state-default" id="' + FolderId + '" operation="moveDelete" role="menuitem" aria-disabled="false"><span class="k-link">' + MailBoxFolders[FolderCount].text + '</span></li>';
+                        $('#MoveMenu').find('.k-menu-group').append(newds);
 
-                            $('#Disable').css("display", "");
-                        }
-                        else {
-                            if (FolderCount == 0) {
-                                var newds = '<li class="k-item k-state-default"  role="menuitem" aria-disabled="false"><span class="k-link" style="color:red">You Dont have permistion </span></li>';
-                                $('#MoveMenu').find('.k-menu-group').append(newds);
-                            }
-                            $('#Disable').css("display", "none");
-                        }
+                        $('#Disable').css("display", "");
+
+                        //if (MailBoxFolders[FolderCount].Owner == "YES") {
+                        //    var newds = '<li class="k-item k-state-default" id="' + FolderId + '" operation="moveDelete" role="menuitem" aria-disabled="false"><span class="k-link">' + MailBoxFolders[FolderCount].text + '</span></li>';
+                        //    $('#MoveMenu').find('.k-menu-group').append(newds);
+
+                        //    $('#Disable').css("display", "");
+                        //}
+                        //else {
+                        //    if (FolderCount == 0) {
+                        //        var newds = '<li class="k-item k-state-default"  role="menuitem" aria-disabled="false"><span class="k-link" style="color:red">You Dont have permistion </span></li>';
+                        //        $('#MoveMenu').find('.k-menu-group').append(newds);
+                        //    }
+                        //    $('#Disable').css("display", "none");
+                        //}
                     }
 
                     populateNavigationTree(MailBoxFolders, FromSearchFolder);
@@ -459,6 +463,7 @@ function mailContextMenuOpen(e) {
 }
 
 function mailSelectionChanged(e) {
+    debugger;
     var selectedRows = this.select();
 
     selectionChanged(e.sender, 'mailsSelectedRow');
@@ -477,52 +482,52 @@ function mailSelectionChanged(e) {
 }
 
 function selectionChanged(widget, selectedRowPrefix) {
-    var navigationTreeView = $('#navigationTreeView').data('kendoTreeView');
-    var selectedNode = navigationTreeView.select();
-    var selectedRows = widget.select();
+    //var navigationTreeView = $('#navigationTreeView').data('kendoTreeView');
+    //var selectedNode = navigationTreeView.select();
+    //var selectedRows = widget.select();
 
-    if (!selectedNode) {
-        return;
-    }
+    //if (!selectedNode) {
+    //    return;
+    //}
 
-    var selectedNodeData = navigationTreeView.dataItem(selectedNode);
-    try{
-        var selectedNodeValue = selectedNodeData.value;
-    }
-    catch(err)
-    {
+    //var selectedNodeData = navigationTreeView.dataItem(selectedNode);
+    //try{
+    //    var selectedNodeValue = selectedNodeData.value;
+    //}
+    //catch(err)
+    //{
 
-    }
+    //}
   
 
-    if (selectedRows.length === 1) {
-        var dataItem = widget.dataItem(selectedRows);
+    //if (selectedRows.length === 1) {
+    //    var dataItem = widget.dataItem(selectedRows);
 
-        if (markedAsUnread) {
-            markedAsUnread = false;
-        } else if (!dataItem.IsRead) {
-            marked = true;
-            savedScroll = widget.content.scrollTop();
+    //    if (markedAsUnread) {
+    //        markedAsUnread = false;
+    //    } else if (!dataItem.IsRead) {
+    //        marked = true;
+    //        savedScroll = widget.content.scrollTop();
 
-            dataItem.IsRead = true;
-            dataItem.dirty = true;
-            selectedRows.removeClass("unread");
-            widget.dataSource.sync();
-        }
+    //        dataItem.IsRead = true;
+    //        dataItem.dirty = true;
+    //        selectedRows.removeClass("unread");
+    //        widget.dataSource.sync();
+    //    }
 
-        Cookies.set(selectedRowPrefix + selectedNodeValue, dataItem.ID);
-    } else {
-        var selectedRowsIds = [];
+    //    Cookies.set(selectedRowPrefix + selectedNodeValue, dataItem.ID);
+    //} else {
+    //    var selectedRowsIds = [];
 
-        for (var i = 0; i < selectedRows.length; i++) {
-            var selectedRow = selectedRows[i];
-            var dataItem = widget.dataItem(selectedRow);
+    //    for (var i = 0; i < selectedRows.length; i++) {
+    //        var selectedRow = selectedRows[i];
+    //        var dataItem = widget.dataItem(selectedRow);
 
-            selectedRowsIds.push(dataItem.ID);
-        }
+    //        selectedRowsIds.push(dataItem.ID);
+    //    }
 
-        Cookies.set(selectedRowPrefix + selectedNodeValue, selectedRowsIds.join());
-    }
+    //    Cookies.set(selectedRowPrefix + selectedNodeValue, selectedRowsIds.join());
+    //}
 }
 
 // Populated selected rows, based on previously saved selection
@@ -563,6 +568,7 @@ function polulateSelectedRows(widget) {
 // Bind mail ceckboxes
 function bindCheckboxes() {
     $('.chkbx').on('change', function (e) {
+        debugger;
         var target = $(e.target);
         var checked = e.target.checked;
         var mailsGrid = $("#mainWidget").data("kendoGrid");
@@ -636,6 +642,7 @@ function toggleEnableMenuItems(widget, widgetId, isEnabled) {
 
 // Check checkbox on mail selection
 function checkSelectedCheckbox(selectedRows) {
+    debugger
     var mailsGrid = $('#mainWidget').data('kendoGrid');
     var mailsInView = mailsGrid.dataSource.view().length;
 
@@ -646,7 +653,6 @@ function checkSelectedCheckbox(selectedRows) {
     } else {
         $('input.master-checkbox').prop('checked', true);
     }
-
     var checkboxes = selectedRows.find('.chkbx');
     checkboxes.prop('checked', true);
 }
