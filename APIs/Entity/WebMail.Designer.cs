@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\sudhir.shinde\Desktop\WebMail\APIs\Entity\WebMail.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\POC\phase13\WebMail\APIs\Entity\WebMail.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

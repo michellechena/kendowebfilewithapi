@@ -10,7 +10,7 @@ namespace TelerikMvcWebMail
     {
         public static string CallWebApi(string APIUrl, RestSharp.Method Method,dynamic Paramiter=null)
         {
-            var client = new RestClient(HttpContext.Current.Session["APIHostUrl"].ToString());           
+            var client = new RestClient(SessionMangment.Users_.APIHostUrl);           
 
             var request = new RestRequest(APIUrl, Method);      
             if(Paramiter!=null)

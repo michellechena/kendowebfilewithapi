@@ -386,40 +386,210 @@ C:\Users\Santosh Patil\Downloads\WebMail\WebMail\TelerikMvcWebMail\bin\System.We
 C:\Users\Santosh Patil\Downloads\WebMail\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.csprojResolveAssemblyReference.cache
 C:\Users\Santosh Patil\Downloads\WebMail\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.dll
 C:\Users\Santosh Patil\Downloads\WebMail\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.pdb
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll.config
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.pdb
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\EntityFramework.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\Microsoft.Web.Infrastructure.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\RestSharp.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Cors.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Http.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\WebGrease.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.pdb
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\EntityFramework.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\RestSharp.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Http.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.xml
-C:\POC\phase11\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.dll
-C:\POC\phase11\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.pdb
-C:\POC\phase11\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.csprojResolveAssemblyReference.cache
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll.config
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.pdb
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\EntityFramework.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\RestSharp.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Cors.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Http.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\WebGrease.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.pdb
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\EntityFramework.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\RestSharp.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Http.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.csprojResolveAssemblyReference.cache
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.pdb
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Owin.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.xml
+C:\Users\sudhir.shinde\Downloads\WebMail1\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll.config
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.pdb
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Owin.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\RestSharp.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Cors.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Http.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\WebGrease.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.pdb
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\RestSharp.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Http.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.xml
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.csprojResolveAssemblyReference.cache
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.dll
+C:\Users\Santosh Patil\Downloads\WebMail2aug\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.pdb
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll.config
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.pdb
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Owin.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\RestSharp.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Cors.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Http.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\WebGrease.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.pdb
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\RestSharp.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Http.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.xml
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.csprojResolveAssemblyReference.cache
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.dll
+C:\Users\sudhir.shinde\Downloads\WebMail03Aug\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.pdb
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll.config
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\TelerikMvcWebMail.pdb
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\EntityFramework.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Web.Infrastructure.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Owin.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\RestSharp.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Cors.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Http.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\WebGrease.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Antlr3.Runtime.pdb
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\EntityFramework.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\EntityFramework.SqlServer.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.Cookies.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Microsoft.Owin.Security.OpenIdConnect.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\Newtonsoft.Json.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\RestSharp.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Net.Http.Formatting.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Helpers.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Http.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Mvc.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Optimization.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.Razor.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Deployment.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\bin\System.Web.WebPages.Razor.xml
+C:\POC\phase13\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.dll
+C:\POC\phase13\WebMail\TelerikMvcWebMail\obj\Debug\TelerikMvcWebMail.pdb

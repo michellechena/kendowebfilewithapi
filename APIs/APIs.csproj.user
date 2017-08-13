@@ -3,6 +3,8 @@
   <PropertyGroup>
     <UseIISExpress>true</UseIISExpress>
     <ProjectView>ShowAllFiles</ProjectView>
+    <IISExpressSSLPort>44343</IISExpressSSLPort>
+    <NameOfLastUsedPublishProfile>webfile-api - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -47,7 +47,7 @@ namespace APIs.Controllers
             string Result = string.Empty;
             using (var Entity = new WebMailEntities())
             {
-                _Model = Entity.UserMailBoxes.Where(x => x.UserId == UserId).Select(s => new UserMailBoxApiModel
+                _Model = Entity.UserMailBoxes.Where(x => x.UserId == UserId && x.PermitionLevel !="0").Select(s => new UserMailBoxApiModel
                 {
                     MailboxId = s.MailboxId,
                     FullName = s.MailBox.FullName,
@@ -72,6 +72,18 @@ namespace APIs.Controllers
             return _MainBoxList;
         }
 
+        [HttpGet]
+        public string CheckMailBoxPermition(string MailBoxId, string UserId)
+        {
+            long _UserId = Convert.ToInt32(UserId);
+            long _MailBoxId = Convert.ToInt32(MailBoxId);
+            string result = string.Empty;
+            using (var Entity = new WebMailEntities())
+            {
+                result = Entity.UserMailBoxes.Where(s => s.UserId == _UserId && s.MailboxId == _MailBoxId).Select(s => s.PermitionLevel).FirstOrDefault();
+            }
+            return result;
+        }
 
         [HttpGet]
         public IHttpActionResult GetMailBoxFolderList(long MailBoxId, string Defoult = null, string SerchedFolderString = null, string UserId = null)
@@ -82,7 +94,7 @@ namespace APIs.Controllers
             List<FolderApiModel> Model = new List<FolderApiModel>();
             using (var Entity = new WebMailEntities())
             {
-                Model = Entity.Folders.Where(x => x.MailBoxId == MailBoxId ).Select(s => new FolderApiModel
+                Model = Entity.Folders.Where(x => x.MailBoxId == MailBoxId && x.StatusId !=0 ).Select(s => new FolderApiModel
                 {
                     Id = s.Id,
                     Name = s.Name,
@@ -434,57 +446,55 @@ namespace APIs.Controllers
             }
         }
 
+        [HttpGet]
+        public FilesApiModel ReadMailDetails(string MailId)
+        {
+            long _MailId = Convert.ToInt32(MailId);
+            FilesApiModel result = new Models.FilesApiModel();
 
-        //[HttpPost]
-        //public IHttpActionResult UpdateEmailSubject( MailApiModel mail)
-        //{
-        //    try
-        //    {
-        //        using (var Entity = new WebMailEntities())
-        //        {
-        //            Mail Mail = Entity.Mails.Where(s => s.MessageID == mail.ID).FirstOrDefault();
-        //            if (Mail != null)
-        //            {
-        //                Mail.Status = mail.Status;
-        //                Mail.Subject = mail.Subject;
-        //                Entity.SaveChanges();
-        //            }
-        //        }
-        //        return Json(true);
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        return Json(false);
-        //    }
+            using (var Entity = new WebMailEntities())
+            {
+                result = Entity.Files.Where(x => x.Id == _MailId).Select(message => new FilesApiModel
+                {
+                    Id = message.Id,
+                    Name = message.Name,
+                    Path = message.Path,
+                    TypeId = message.TypeId,
+                    StatusId=message.StatusId                   
+                }).FirstOrDefault();
+            }
+            return result;
+        }
 
 
-        //}
+        [HttpPost]
+        public bool UpdateFile(FilesApiModel _FilesApiModel)
+        {
+            try
+            {
+                File _File = new File();
+                using (var Entity = new WebMailEntities())
+                {
+                    int _id = _FilesApiModel.Id;
+                    _File = Entity.Files.Where(z => z.Id == _id).FirstOrDefault();
+                    if (_File != null)
+                    {
+                        _File.IsValid = _FilesApiModel.IsValid;
+                        _File.Name = _FilesApiModel.Name;
+                        _File.Path = _FilesApiModel.Path;
+                        _File.TypeId = _FilesApiModel.TypeId;
+                        Entity.SaveChanges();
+                    }
+                }
 
-        //[HttpGet]
-        //public MailApiModel ReadMailDetails(string MailId)
-        //{
-        //    long _MailId = Convert.ToInt32(MailId);
-        //    MailApiModel result = new Models.MailApiModel();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
-        //    using (var Entity = new WebMailEntities())
-        //    {
-        //        result = Entity.Mails.Where(x => x.MessageID == _MailId).Select(message => new MailApiModel
-        //        {
-        //            ID = message.MessageID,
-        //            IsRead = message.IsRead,
-        //            From = message.From,
-        //            To = message.To,
-        //            Subject = message.Subject,
-        //            Date = message.Received,
-        //            Text = message.Body,
-        //            Category = message.Category.ToString(),
-        //            Email = message.Email,
-        //            Status = message.Status,
-        //        }).FirstOrDefault();
-        //    }
-        //    return result;
-        //}
-        
 
 
         //[HttpGet]

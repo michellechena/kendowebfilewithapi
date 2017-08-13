@@ -7,6 +7,16 @@ using System.Web.Mvc;
 
 namespace APIs.Models
 {
+    public class SelectedItem
+    {
+        public bool Selected { get; set; }
+        /// <summary>Gets or sets the text of the selected item.</summary>
+        /// <returns>The text.</returns>
+        public string Text { get; set; }
+        /// <summary>Gets or sets the value of the selected item.</summary>
+        /// <returns>The value.</returns>
+        public string Value { get; set; }
+    }
     public class UserApIModel
     {
         public int id { get; set; }

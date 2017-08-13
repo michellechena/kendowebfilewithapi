@@ -1,159 +1,99 @@
-﻿using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using TelerikMvcWebMail.Filter;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OpenIdConnect;
 using TelerikMvcWebMail.Models;
 
 namespace TelerikMvcWebMail.Controllers
 {
-    [SessionExpire]
     public class HomeController : Controller
     {
-        
-        public ActionResult FromOtherPageRequest(string MailBoxId = null)
+        // GET: Home
+        public ActionResult Index(string ReturnUrl=null)
         {
-            TempData["SelectedMailBoxId"] = MailBoxId;
-            return  RedirectToAction("Index");
-        } 
-        public ActionResult Index()
-        {
-            int MailBoxid = 0;
             try
             {
-                MailBoxid = Convert.ToInt32(TempData["SelectedMailBoxId"]);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            if (MailBoxid != 0)
-            {
-                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"]+ "&MailBoxId="+ MailBoxid, RestSharp.Method.GET);
-                string FirstFolderId = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
-                ViewBag.FirstFolderId = FirstFolderId;
-            }
-            else
-            {
-                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"], RestSharp.Method.GET);
-                string FirstFolderId = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
-                ViewBag.FirstFolderId = FirstFolderId;
-            }
-
-            return View();
-        }
-
-        
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
-
-            return PartialView();
-        }
-            
-     
-        [ValidateInput(false)]
-        public ActionResult ReadMailDetails(string MailId)
-        {
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/ReadMailDetails?MailId="+ MailId, RestSharp.Method.GET);
-            FilesViewModel Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FilesViewModel>(Data);           
-            return PartialView("EmailDetailes", Result);
-
-        }
-        [HttpPost]
-        public ActionResult UpdateEmailSubject(FilesViewModel Model)
-        {
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/UpdateEmailSubject", RestSharp.Method.POST, Model);
-            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
-            return Json(Result, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult MailBoxFolders()
-        {
-            
-            return View();
-        }
-        
-        public ActionResult returnFolderPartalView(string FolderId)
-        {
-            FoldersViewmodel Model = new FoldersViewmodel();            
-            List<SelectListItem> List = new List<SelectListItem>() {
-                new SelectListItem {
-                    Text="Select",
-                    Value=""
-                }
-            };
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxList", RestSharp.Method.GET);
-            List<SelectListItem> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<SelectListItem>>(Data);
-            List.AddRange(Result);
-            ViewBag.FolderList = List;
-           
-            if (!string.IsNullOrEmpty(FolderId))
-            {
-                var _MailBoxFolderModel = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFolderDeatiles?FolderId=" + FolderId, RestSharp.Method.GET);
-                Model = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FoldersViewmodel>(_MailBoxFolderModel);
-                             
-            }
-            
-            return View("_PartialAddEditFolder", Model);
-
-        }
-
-
-        public ActionResult AddEditFolder(FoldersViewmodel Model)
-        {
-            
-                    
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/AddEditFolder", RestSharp.Method.POST, Model);
-            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
-            return Json(Result, JsonRequestBehavior.AllowGet);
-
-        }
-       
-        public ActionResult getFolderlistBySelectedmailBox(long MailBoxId)
-        {
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxFolderListForFolderPage?MailBoxId=" + MailBoxId+ "&UserId="+ Session["UserId"].ToString(), RestSharp.Method.GET);
-            List<FoldersViewmodel> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<FoldersViewmodel>>(Data);
-            return Json(Result, JsonRequestBehavior.AllowGet);            
-           
-        }
-        public ActionResult GetNewEmail()
-        {
-            return PartialView();
-        }
-
-        public ActionResult SaveNewFile(FilesViewModel _MailViewModel)
-        {
-            if (string.IsNullOrEmpty(_MailViewModel.Path))
-            {
-                _MailViewModel.IsValid = false;
-            }
-            else
-            {
-                Uri uriResult;
-                bool result = Uri.TryCreate(_MailViewModel.Path, UriKind.Absolute, out uriResult)
-                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-
-                if (result)
+                if (ReturnUrl == "UserNameInvalid")
                 {
-                    _MailViewModel.IsValid = true;
-                }
+                   
+                    ViewBag.LoginError = "You dont have permition to view this application";
+                    return View();
+                }          
+                else if(ReturnUrl == "Loginagin")
+                {
+                    SignOut();
+                    return View();
+                }    
                 else
                 {
-                    _MailViewModel.IsValid = false;
+                    var claimsPrincipalCurrent = System.Security.Claims.ClaimsPrincipal.Current;
+                    //You get the user’s first and last name below:
+                    var Name = claimsPrincipalCurrent.FindFirst("name").Value;
+                    // The 'preferred_username' claim can be used for showing the username
+                    var Username = claimsPrincipalCurrent.FindFirst("preferred_username").Value;
+                    // The subject claim can be used to uniquely identify the user across the web
+                    var Subject = claimsPrincipalCurrent.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+                    // TenantId is the unique Tenant Id - which represents an organization in Azure AD
+                    var TenantId = claimsPrincipalCurrent.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;                   
+                    return RedirectToAction("ValidateUser", "Home", new { UserEmail = Username });
                 }
             }
-            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/SaveNewFile", RestSharp.Method.POST, _MailViewModel);
-            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
-            return Json(Result, JsonRequestBehavior.AllowGet);
+            catch(Exception ex)
+            {
+                return View();
+            }
+            
         }
 
+        
+                
+        public ActionResult ValidateUser(string UserEmail)
+        {                      
+            SignIn Model = new Models.SignIn();
+            Model.UserName = UserEmail;
+            SessionMangment.Users_.APIHostUrl = System.Configuration.ConfigurationManager.AppSettings["APIHostUrl"];
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/ValidateUser", RestSharp.Method.POST, Model);
+            UserViewModel _User = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<UserViewModel>(Data);
+            if (_User == null)
+            {
+                return RedirectToAction("Index", "Home", new { ReturnUrl = "UserNameInvalid" });
+            }
+            else
+            {
+                SessionMangment.Users_.FullName = _User.FirstName + " " + _User.LastName;
+                SessionMangment.Users_.UserEmail = _User.Email;
+                SessionMangment.Users_.UserId = _User.id.ToString();
+                return RedirectToAction("Index", "File");
+            }           
+        }
 
+        /// <summary>
+        /// Send an OpenID Connect sign-in request.
+        /// Alternatively, you can just decorate the SignIn method with the [Authorize] attribute
+        /// </summary>
+        public void SignIn()
+        {
+            if (!Request.IsAuthenticated)
+            {
+                HttpContext.GetOwinContext().Authentication.Challenge(
+                    new AuthenticationProperties { RedirectUri = "/" },
+                    OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            }
+        }
 
+        /// <summary>
+        /// Send an OpenID Connect sign-out request.
+        /// </summary>
+        public void SignOut()
+        {
+            HttpContext.GetOwinContext().Authentication.SignOut(
+                    OpenIdConnectAuthenticationDefaults.AuthenticationType,
+                    CookieAuthenticationDefaults.AuthenticationType);
+        }
+        
     }
 }
