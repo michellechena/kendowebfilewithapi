@@ -14,14 +14,7 @@ namespace TelerikMvcWebMail.Controllers
     [SessionExpire]
     public class HomeController : Controller
     {
-        private MailsService mailsService;
-
-        public HomeController()
-        {
-
-            mailsService = new MailsService(new WebMailEntities());
-
-        }
+        
         public ActionResult FromOtherPageRequest(string MailBoxId = null)
         {
             TempData["SelectedMailBoxId"] = MailBoxId;
@@ -35,36 +28,26 @@ namespace TelerikMvcWebMail.Controllers
                 MailBoxid = Convert.ToInt32(TempData["SelectedMailBoxId"]);
             }
             catch(Exception ex)
-            {
-
+            {                
             }
             if (MailBoxid!=0)
             {
-                var FirstFolderId = mailsService.GetFirstFolderId(Session["UserId"].ToString(), MailBoxid);
-                ViewBag.FirstFolderId = FirstFolderId;
+                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"].ToString()+"&MailBoxid="+MailBoxid , RestSharp.Method.GET);
+                string Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
+                ViewBag.FirstFolderId = Result;
             }
             else
             {
-                var FirstFolderId = mailsService.GetFirstFolderId(Session["UserId"].ToString());
-                ViewBag.FirstFolderId = FirstFolderId;
+                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFirstFolderId?UserId=" + Session["UserId"].ToString(), RestSharp.Method.GET);
+                string Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<string>(Data);
+                ViewBag.FirstFolderId = Result;
+                
             }
              
               return View();
         }
 
-        public ActionResult NewMail(string id, string mailTo, string subject)
-        {
-            var idString = "";
-
-            if (!String.IsNullOrEmpty(id))
-            {
-                idString = id + ": ";
-            }
-            ViewBag.MailTo = mailTo;
-            ViewBag.Subject = idString + HttpUtility.UrlDecode(subject);
-
-            return PartialView("NewMail");
-        }
+        
 
         public ActionResult About()
         {
@@ -72,58 +55,21 @@ namespace TelerikMvcWebMail.Controllers
 
             return PartialView();
         }
-                
-
-        [ValidateInput(false)]
-        public ActionResult Update([DataSourceRequest] DataSourceRequest request, MailViewModel mail)
-        {
-            if (mail.Category == "Disable")
-            {
-                bool Result = mailsService.UpdateEmailSubject(mail, "Disable");
-                return Json(Result, JsonRequestBehavior.AllowGet);
-            }
-            else if(mail.Category=="Deleted")
-            {
-                bool Result = mailsService.UpdateEmailSubject(mail, "Deleted");
-                return Json(Result, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {                
-
-                    mailsService.Update(mail);
-               
-            }
-
-            return Json(new[] { mail }.ToDataSourceResult(request, ModelState));
-        }
-       
-        
-
-        [ValidateInput(false)]
-        public ActionResult Create([DataSourceRequest] DataSourceRequest request, MailViewModel mail)
-        {
             
-            if (mail != null && ModelState.IsValid)
-            {
-                mailsService.Create(mail);
-            }
-
-            return Json(new[] { mail }.ToDataSourceResult(request, ModelState));
-        }
-
      
         [ValidateInput(false)]
         public ActionResult ReadMailDetails(string MailId)
         {
-            MailViewModel Model = new MailViewModel();
-            Model = mailsService.ReadMailDetails(MailId);
-            return PartialView("EmailDetailes", Model);
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/ReadMailDetails?MailId="+ MailId, RestSharp.Method.GET);
+            MailViewModel Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<MailViewModel>(Data);           
+            return PartialView("EmailDetailes", Result);
 
         }
         [HttpPost]
         public ActionResult UpdateEmailSubject(MailViewModel Model)
         {
-            bool Result = mailsService.UpdateEmailSubject(Model);
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/UpdateEmailSubject", RestSharp.Method.POST, Model);
+            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
             return Json(Result, JsonRequestBehavior.AllowGet);
         }
 
@@ -132,56 +78,56 @@ namespace TelerikMvcWebMail.Controllers
             
             return View();
         }
-        public ActionResult ReadFolderList([DataSourceRequest] DataSourceRequest request)
-        {
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();
-            List<MailBoxFolderModel> Model = Obj.AllUserFolderList( Session["UserId"].ToString());
-            return Json(Model.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-            
-        }
+        
         public ActionResult returnFolderPartalView(string FolderId)
         {
-            MailBoxFolderModel Model = new MailBoxFolderModel();
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj1 = new DataLayer.CommonFunctions();
+            MailBoxFolderModel Model = new MailBoxFolderModel();            
             List<SelectListItem> List = new List<SelectListItem>() {
                 new SelectListItem {
                     Text="Select",
                     Value=""
                 }
             };
-            List.AddRange(Obj1.MailBoxList(Convert.ToInt32(Session["UserId"])));
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxListForFolder?UserId="+ Session["UserId"], RestSharp.Method.GET);
+            List<SelectListItem> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<SelectListItem>>(Data);
+            List.AddRange(Result);
             ViewBag.FolderList = List;
            
             if (!string.IsNullOrEmpty(FolderId))
             {
-                TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();
-                 Model = Obj.GetFolderDeatiles(Convert.ToInt32(FolderId));                
+                var _MailBoxFolderModel = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/GetFolderDeatiles?FolderId=" + FolderId, RestSharp.Method.GET);
+                Model = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<MailBoxFolderModel>(_MailBoxFolderModel);
+                             
             }
             
             return View("_PartialAddEditFolder", Model);
 
         }
+
+
         public ActionResult AddEditFolder(MailBoxFolderModel Model)
         {
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();
-            Model.UserId = Session["UserId"].ToString();
-            bool Result=Obj.AddEditFolder(Model);            
+            
+            Model.UserId = Session["UserId"].ToString();           
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/AddEditFolder", RestSharp.Method.POST, Model);
+            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
             return Json(Result, JsonRequestBehavior.AllowGet);
 
         }
         public ActionResult FunctionDeleteFolder(string id)
-        {
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();           
-            bool Result = Obj.FunctionDeleteFolder(id);
+        {            
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/DeleteFolder?Id="+id, RestSharp.Method.GET);
+            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);            
             return Json(Result, JsonRequestBehavior.AllowGet);
 
         }
         
         public ActionResult getFolderlistBySelectedmailBox(long MailBoxId)
         {
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();
-            List<MailBoxFolderModel> Model = Obj.MailBoxFolderList(Convert.ToInt32(MailBoxId), Session["UserId"].ToString());
-            return Json(Model,JsonRequestBehavior.AllowGet);
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/MailBoxFolderListForFolderPage?MailBoxId=" + MailBoxId+ "&UserId="+ Session["UserId"].ToString(), RestSharp.Method.GET);
+            List<MailBoxFolderModel> Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<MailBoxFolderModel>>(Data);
+            return Json(Result, JsonRequestBehavior.AllowGet);            
+           
         }
         public ActionResult GetNewEmail()
         {
@@ -189,9 +135,7 @@ namespace TelerikMvcWebMail.Controllers
         }
 
         public ActionResult SaveNewEmail(MailViewModel _MailViewModel)
-        {            
-           
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();
+        {
             if (string.IsNullOrEmpty(_MailViewModel.Url))
             {
                 _MailViewModel.IsValid = false;
@@ -201,7 +145,7 @@ namespace TelerikMvcWebMail.Controllers
                 Uri uriResult;
                 bool result = Uri.TryCreate(_MailViewModel.Url, UriKind.Absolute, out uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-               
+
                 if (result)
                 {
                     _MailViewModel.IsValid = true;
@@ -210,17 +154,16 @@ namespace TelerikMvcWebMail.Controllers
                 {
                     _MailViewModel.IsValid = false;
                 }
-            }          
-
-            bool Result= Obj.SaveNewEmail(_MailViewModel);
-            
-            return Json(Result,JsonRequestBehavior.AllowGet);
+            }
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/SaveNewEmail", RestSharp.Method.POST, _MailViewModel);
+            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
+            return Json(Result, JsonRequestBehavior.AllowGet);            
         }
 
         public ActionResult UpdateMailActiveDisable(string MessageId, string Flag)
         {
-            TelerikMvcWebMail.DataLayer.CommonFunctions Obj = new DataLayer.CommonFunctions();
-            bool Result = Obj.UpdateMailStatus(MessageId, Flag);
+            var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/UpdateMailStatus?Id="+ MessageId+ "&flag="+ Flag, RestSharp.Method.GET);
+            bool Result = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<bool>(Data);
             return Json(Result, JsonRequestBehavior.AllowGet);
         }
 

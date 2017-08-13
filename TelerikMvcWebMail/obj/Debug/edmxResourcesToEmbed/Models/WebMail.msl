@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="WebMailStoreContainer" CdmEntityContainer="WebMailEntities">
+  <EntityContainerMapping StorageEntityContainer="WebMailModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="WebMail.Event">
+      <EntityTypeMapping TypeName="WebMailModel.Event">
         <MappingFragment StoreEntitySet="Events">
           <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="Start" ColumnName="Start" />
@@ -19,8 +19,57 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MailBoxes">
+      <EntityTypeMapping TypeName="WebMailModel.MailBox">
+        <MappingFragment StoreEntitySet="MailBox">
+          <ScalarProperty Name="MailBoxId" ColumnName="MailBoxId" />
+          <ScalarProperty Name="MailBoxName" ColumnName="MailBoxName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MailBoxSequence" ColumnName="MailBoxSequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailBoxAccesses">
+      <EntityTypeMapping TypeName="WebMailModel.MailBoxAccess">
+        <MappingFragment StoreEntitySet="MailBoxAccess">
+          <ScalarProperty Name="MailBoxAccessId" ColumnName="MailBoxAccessId" />
+          <ScalarProperty Name="MailBoxId" ColumnName="MailBoxId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailBoxFolders">
+      <EntityTypeMapping TypeName="WebMailModel.MailBoxFolder">
+        <MappingFragment StoreEntitySet="MailBoxFolders">
+          <ScalarProperty Name="MailBoxFolderId" ColumnName="MailBoxFolderId" />
+          <ScalarProperty Name="MailBoxFolderName" ColumnName="MailBoxFolderName" />
+          <ScalarProperty Name="MailBoxId" ColumnName="MailBoxId" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mails">
+      <EntityTypeMapping TypeName="WebMailModel.Mail">
+        <MappingFragment StoreEntitySet="Mails">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="People">
-      <EntityTypeMapping TypeName="WebMail.Person">
+      <EntityTypeMapping TypeName="WebMailModel.Person">
         <MappingFragment StoreEntitySet="People">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -35,7 +84,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tasks">
-      <EntityTypeMapping TypeName="WebMail.Task">
+      <EntityTypeMapping TypeName="WebMailModel.Task">
         <MappingFragment StoreEntitySet="Tasks">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Subject" ColumnName="Subject" />
@@ -46,61 +95,12 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="WebMail.User">
+      <EntityTypeMapping TypeName="WebMailModel.User">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MailBoxes">
-      <EntityTypeMapping TypeName="WebMail.MailBox">
-        <MappingFragment StoreEntitySet="MailBox">
-          <ScalarProperty Name="MailBoxSequence" ColumnName="MailBoxSequence" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="MailBoxName" ColumnName="MailBoxName" />
-          <ScalarProperty Name="MailBoxId" ColumnName="MailBoxId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MailBoxAccesses">
-      <EntityTypeMapping TypeName="WebMail.MailBoxAccess">
-        <MappingFragment StoreEntitySet="MailBoxAccess">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="MailBoxId" ColumnName="MailBoxId" />
-          <ScalarProperty Name="MailBoxAccessId" ColumnName="MailBoxAccessId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MailBoxFolders">
-      <EntityTypeMapping TypeName="WebMail.MailBoxFolder">
-        <MappingFragment StoreEntitySet="MailBoxFolders">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-          <ScalarProperty Name="MailBoxId" ColumnName="MailBoxId" />
-          <ScalarProperty Name="MailBoxFolderName" ColumnName="MailBoxFolderName" />
-          <ScalarProperty Name="MailBoxFolderId" ColumnName="MailBoxFolderId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Mails">
-      <EntityTypeMapping TypeName="WebMail.Mail">
-        <MappingFragment StoreEntitySet="Mails">
-          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
-          <ScalarProperty Name="To" ColumnName="To" />
-          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
-          <ScalarProperty Name="Received" ColumnName="Received" />
-          <ScalarProperty Name="Subject" ColumnName="Subject" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="From" ColumnName="From" />
-          <ScalarProperty Name="Body" ColumnName="Body" />
-          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

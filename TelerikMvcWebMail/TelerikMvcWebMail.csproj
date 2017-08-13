@@ -140,72 +140,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Common.cs" />
-    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
-    <Compile Include="DataLayer\UsersDataLayer.cs" />
     <Compile Include="Filter\SessionExpire.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContactsService.cs" />
-    <Compile Include="Models\ContactViewModel.cs" />
-    <Compile Include="Models\Event.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EventsService.cs" />
-    <Compile Include="Models\Mail.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MailBox.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MailBoxAccess.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MailBoxFolder.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MailsService.cs" />
     <Compile Include="Models\MailViewModel.cs" />
-    <Compile Include="Models\Person.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SignIn.cs" />
-    <Compile Include="Models\Task.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TasksService.cs" />
-    <Compile Include="Models\TaskViewModel.cs" />
-    <Compile Include="Models\EventViewModel.cs" />
-    <Compile Include="Models\User.cs">
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebMail.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebMail.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebMail.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebMail.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebMail.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebMail.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\WebMail.mdf" />
-    <Content Include="App_Data\WebMail_log.ldf">
-      <DependentUpon>WebMail.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\about.css">
       <DependentUpon>about.scss</DependentUpon>
     </Content>
@@ -242,16 +190,6 @@
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Fonts\WebComponentsIcons\WebComponentsIcons.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\WebMail.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebMail.edmx</DependentUpon>
-      <LastGenOutput>WebMail.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\WebMail.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebMail.edmx</DependentUpon>
-      <LastGenOutput>WebMail.cs</LastGenOutput>
-    </Content>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -292,16 +230,15 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Tasks\NewTask.cshtml" />
     <Content Include="Views\Tasks\Tasks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Contacts\Contacts.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\NewMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Calendar\Calendar.cshtml" />
@@ -351,13 +288,6 @@
     <Content Include="Fonts\noto\NotoSansUI-BoldItalic.ttf" />
     <Content Include="Fonts\noto\NotoSansUI-Italic.ttf" />
     <Content Include="Fonts\noto\NotoSansUI-Regular.ttf" />
-    <EntityDeploy Include="Models\WebMail.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebMail.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WebMail.edmx.diagram">
-      <DependentUpon>WebMail.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Home\EmailDetailes.cshtml" />
     <Content Include="Views\Home\MailBoxFolders.cshtml" />
     <Content Include="Views\Home\_PartialAddEditFolder.cshtml" />

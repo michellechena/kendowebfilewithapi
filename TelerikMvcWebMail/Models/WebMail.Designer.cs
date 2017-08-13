@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Santosh Patil\Downloads\web-mail-sample-app-mvc-master\web-mail-sample-app-mvc-master\TelerikMvcWebMail\Models\WebMail.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Santosh Patil\Downloads\web-mail-sample-app-mvc-master (1)\web-mail-sample-app-mvc-master\TelerikMvcWebMail\Models\WebMail.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -1,14 +1,16 @@
 ﻿
 <!DOCTYPE html>
+@{
 
+    var FolderListUrl = Session["APIHostUrl"] + "/api/ApiHome/UserFolderList";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>MailBoxFolders</title>
     <style>
         #GridDiv .k-header {
-            font-weight: 700 !important;
-        }
+            font-weight: 700 !important;}
     </style>
 </head>
 <body>
@@ -27,8 +29,13 @@
             @(Html.Kendo().Grid<TelerikMvcWebMail.Models.MailBoxFolderModel>()
           .Name("gridFolders")
           .DataSource(dataSource => dataSource //Configure the Grid data source.
-              .Ajax() //Specify that Ajax binding is used.
-              .Read(read => read.Action("ReadFolderList", "Home")) //Set the action method which will return the data in JSON format.
+              .Ajax() 
+              .Read(read => read.Action("ReadFolderList", "Home"))
+              .Read(read => read
+                    .Url(FolderListUrl)
+                    .Data("SendLoginUserId")
+                    .Type(HttpVerbs.Get)
+                    )
            )
           .Columns(columns =>
           {
@@ -59,6 +66,14 @@
 </div>
 
 <script>
+
+
+    function SendLoginUserId() {
+        return {
+            
+            UserId: '@Session["UserId"]'
+        }
+    }
 
     function FunctionEditFolder(id) {
         $.ajax({

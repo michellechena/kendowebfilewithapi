@@ -106,8 +106,7 @@ function mailMenuSelect(e) {
         case "unread":
             mailMarkAsReadUnread("unread");
             break;
-        case "NewFolder":
-           
+        case "NewFolder":           
             window.location.href = "../Home/MailBoxFolders";
             break;
         case "print":

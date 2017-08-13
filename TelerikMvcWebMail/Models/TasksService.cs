@@ -64,12 +64,12 @@ namespace TelerikMvcWebMail.Models
             }
             else
             {
-                var entity = task.ToEntity();
+                //var entity = task;
 
-                entities.Tasks.Add(entity);
-                entities.SaveChanges();
+                //entities.Tasks.Add(entity);
+                //entities.SaveChanges();
 
-                task.Id = entity.Id;
+                //task.Id = entity.Id;
             }
         }
 
@@ -93,10 +93,10 @@ namespace TelerikMvcWebMail.Models
             }
             else
             {
-                var entity = task.ToEntity();
-                entities.Tasks.Attach(entity);
-                entities.Entry(entity).State = EntityState.Modified;
-                entities.SaveChanges();
+               //var entity = task;
+               // entities.Tasks.Attach(entity);
+               // entities.Entry(entity).State = EntityState.Modified;
+               // entities.SaveChanges();
             }
         }
 
@@ -112,10 +112,10 @@ namespace TelerikMvcWebMail.Models
             }
             else
             {
-                var entity = task.ToEntity();
-                entities.Tasks.Attach(entity);
-                entities.Tasks.Remove(entity);
-                entities.SaveChanges();
+                //var entity = task.ToEntity();
+                //entities.Tasks.Attach(entity);
+                //entities.Tasks.Remove(entity);
+                //entities.SaveChanges();
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Mail";
     var MailRedUrl = Session["APIHostUrl"]+"/api/ApiHome/GetEmailList";
+    var MailUpdateUrl = Session["APIHostUrl"] + "api/ApiHome/UpdateEmailDetailes";
 }
 
 @section PageStyles {
@@ -110,13 +111,17 @@
                     .PageSize(100)
                     .Model(model => model.Id(p => p.ID))
                     .Create(create => create.Action("Create", "Home"))
-                    //.Read(read => read.Action("Read", "Home").Data("SendSelectdMailBoxId"))
+                    
                     .Read(read => read
                     .Url(MailRedUrl)
                     .Data("SendSelectdMailBoxIdAndLoginUser")
                     .Type(HttpVerbs.Get)
                     )
-                    .Update(update => update.Action("Update", "Home"))
+                    .Update(Update => Update
+                    .Url(MailUpdateUrl)                    
+                    .Type(HttpVerbs.Post)
+                    )
+                    
                     .Events(e => e.Change("dataSourceChange").RequestEnd("dataSourceRequestEnd"))
                 )
                 .Events(e => e

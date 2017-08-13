@@ -7,6 +7,21 @@ using System.Web.Mvc;
 
 namespace APIs.Models
 {
+    public class UserApIModel
+    {
+        public int UserId { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class SignIn
+    {
+        
+        public string UserName { get; set; }
+       
+        public string Password { get; set; }
+    }
     public class MailApiModel
     {
         public int ID { get; set; }

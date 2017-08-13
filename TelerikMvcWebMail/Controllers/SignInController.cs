@@ -10,7 +10,7 @@ namespace TelerikMvcWebMail.Controllers
 {
     public class SignInController : Controller
     {
-        TelerikMvcWebMail.DataLayer.UsersDataLayer _UsersDataLayer = new DataLayer.UsersDataLayer();
+        
         //
         // GET: /SignIn/
         public ActionResult Index(string ReturnUrl)
@@ -35,7 +35,8 @@ namespace TelerikMvcWebMail.Controllers
             }
             else
             {
-                User _User = _UsersDataLayer.ValidateUser(Model.UserName, Model.Password);
+                var Data = TelerikMvcWebMail.Common.CallWebApi("api/ApiHome/ValidateUser", RestSharp.Method.POST,Model);
+                UserViewModel _User = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<UserViewModel>(Data);                
                 if(_User ==null)
                 {
                     ViewBag.LoginError = "User Name and Password Incurrect";

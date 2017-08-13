@@ -35,39 +35,9 @@ namespace TelerikMvcWebMail.Models
         public string Url { get; set; }
         public Nullable<bool> IsValid { get; set; }
         public string RequestFrom { get; set; }
-        internal Mail ToEntity()
-        {
-            return new Mail
-            {
-                Body = Text,
-                From = From,
-                Subject = Subject,
-                Received = Date,
-                IsRead = IsRead,
-                To = To,
-                Category =Convert.ToInt32(Category),
-                MessageID = ID,
-                Email = Email,
-                Status= Status,
-                IsValid=IsValid,
-                Name=Name,
-                Url=Url
-            };
-        }
+    
     }
-
-
-    public class MailBoxModel
-    {
-        public int MailBoxId { get; set; }
-        public string MailBoxName { get; set; }
-        public int UserId { get; set; }
-        public long MailBoxSequence { get; set; }
-        public virtual User User { get; set; }
-        public string Owener { get; set; }
-
-    }
-
+    
     public class MailBoxFolderModel
     {
         public string MailBoxName { get; set; }
